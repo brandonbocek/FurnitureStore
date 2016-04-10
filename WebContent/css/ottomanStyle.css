@@ -1,0 +1,88 @@
+#registerTitle {
+	margin-top: -20px;
+	margin-left: 25%;
+	font-size: 30px;
+}
+
+#registerInfo {
+	margin-top: 30px;
+	margin-left: 30%;
+}
+#adminAddStatusInformer{
+	margin-left:20%;
+	font-size:150%;
+	color:green;
+}
+#adminAddNewCard{
+	margin-left:30%;
+	
+}
+#adminAddNewCardLabel{
+	color:#870afb;
+	margin-bottom:2%;
+}
+#adminAddNewCardSubmit{
+	margin-left:30%;
+	margin-top:-2.5%;
+}
+#adminAddProduct{
+	margin-left:30%;
+	
+}
+#addProductForm{
+	
+}
+#addProductHere{
+	color:#870afb;
+}
+#adminAddNameOfProduct{
+	
+}
+#adminAddDescOfProduct{
+	
+}
+#adminAddPriceOfProduct{
+	
+}
+#adminAddKeyWordsOfProduct{
+	
+}
+#adminImageFileProduct{
+	margin-left:20%;
+}
+#adminImageFileLabel{
+	
+}
+#adminImageFileButton{
+	
+}
+#adminAddSubmit{
+	margin-left:50%;
+}
+
+/* search results images*/
+#resImg{
+	width:200px;
+	height:180px;
+}
+
+#shopCartButton{
+	margin-top:12px;
+	margin-left:50px;
+}
+#shopCartButtonNotLoggedIn{
+	margin-top:12px;
+	margin-left:50px;
+}
+#shopCartTitle{
+	margin-left:30%;
+	font-size:300%;
+}
+#yourTotal{
+	margin-left:45%;
+	font-size:200%;
+	color:purple;
+}
+#checkoutButton{
+	margin-left:50%;
+}
