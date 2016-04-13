@@ -43,7 +43,8 @@ public class AttemptLoginServlet extends HttpServlet {
 				request.getSession().setAttribute("fullName", vl.getCustomerFullName());
 				request.getSession().setAttribute("theCustomer", customer);
 				
-				request.getRequestDispatcher("OttoHome.jsp").forward(request, response);
+				//request.getRequestDispatcher("OttoHome.jsp").forward(request, response);
+				response.sendRedirect("GoToHomeServlet");
 			}
 			else{	//if the user tries to log in, but fails for some reason, they go to register
 				response.sendRedirect("OttoRegister.jsp");

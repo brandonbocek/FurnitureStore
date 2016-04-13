@@ -57,7 +57,7 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class=""><a href="OttoHome.jsp">Home <span class="sr-only">(current)</span></a></li>
+					<li class=""><a href="GoToHomeServlet">Home <span class="sr-only">(current)</span></a></li>
 					<li><a href="AboutUs.jsp">About</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"

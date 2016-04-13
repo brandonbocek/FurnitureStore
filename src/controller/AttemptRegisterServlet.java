@@ -31,9 +31,9 @@ public class AttemptRegisterServlet extends HttpServlet {
 		String ln = request.getParameter("lastName");
 		String pw = request.getParameter("password");
 		String rpw = request.getParameter("rePassword");
-		String bMon = request.getParameter("birthMonth");
-		String bDay = request.getParameter("dayOfMonth");
-		String bYear = request.getParameter("birthYear");
+		
+		String bDay = request.getParameter("birthday");
+		
 		String eAddr = request.getParameter("email");
 		String addrBill = request.getParameter("addressBill");
 		String addrShip = request.getParameter("addressShip");
@@ -43,7 +43,7 @@ public class AttemptRegisterServlet extends HttpServlet {
 		System.out.println("User's before encryption "+cardNum);
 		//cardNum = Bitshifter.encrypt(cardNum);
 		System.out.println("User's after encryption "+cardNum);
-		ValidateRegister vr = new ValidateRegister(fn,ln,pw,rpw,bMon,bDay,bYear,eAddr,addrBill,addrShip,cardNum);
+		ValidateRegister vr = new ValidateRegister(fn,ln,pw,rpw,bDay,eAddr,addrBill,addrShip,cardNum);
 		if(vr.everythingIsValid()){
 			response.sendRedirect("CheckEmail.jsp");
 		}

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <html lang="en">
 <head>
-
+<link rel="stylesheet" href="css/ottomanStyle.css" />
 <title>Welcome Ottoman</title>
 
 
@@ -32,7 +32,7 @@
 /* Carousel Styling */
 .slide1 {
 	background-image: url('ottoImages/hurry_war.jpeg');
-	height: 500px;
+	height: 800px;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -41,7 +41,7 @@
 
 .slide2 {
 	background-image: url('ottoImages/display_1.jpeg');
-	height: 500px;
+	height: 800px;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -50,7 +50,7 @@
 
 .slide3 {
 	background-image: url('ottoImages/display_living_room2.jpeg');
-	height: 500px;
+	height: 800px;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -66,6 +66,13 @@
 .carousel-caption p {
 	font-size: 2em;
 }
+#slide1Text{
+	background-color:red;
+	background-color: rgba(255, 0, 0, 0.6);
+	padding-top:20px;
+	padding-bottom:30px;
+}
+
 </style>
 </head>
 <%@ page import="java.util.*" %>
@@ -100,25 +107,30 @@ pageContext.setAttribute("customer", customer);
 			<div class="item active">
 				<div class="slide1"></div>
 				<div class="carousel-caption">
+				 <div id="slide1Text">
 					<h1>Hurry Up and Buy Our Furniture</h1>
 					<p>Become an Ottoman Today</p>
-					<p>
-						<a href="OttoHome.jsp" class="btn btn-primary btn-sm">Start Shopping</a>
-					</p>
+					<div id="startShoppingInitialButton">
+						<p>
+							<a href="GoToHomeServlet" class="btn btn-primary">Start Shopping</a>
+						</p>
+					</div>
+					
+			     </div>
 				</div>
 			</div>
 			<div class="item">
 				<div class="slide2"></div>
-				<div class="carousel-caption">
-					<h1>Give Us Your Money</h1>
-					<p>That'd Be Sweeter than Honey</p>
+				<div class="carousel-caption" id="slide23Text">
+					<h1>Make Your Residence Look Better</h1>
+					<p>Fill It with Furniture</p>
 				</div>
 			</div>
 			<div class="item">
 				<div class="slide3"></div>
-				<div class="carousel-caption">
-					<h1>Don't You Want to Fill Your House with These?</h1>
-					<p>Who Wouldn't?</p>
+				<div class="carousel-caption" id="slide23Text">
+					<h1>Best Furniture is Here</h1>
+					<p>Not Anywhere Else</p>
 				</div>
 			</div>
 		</div>

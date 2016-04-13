@@ -3,6 +3,7 @@
 
 <html>
 <head>
+<link rel="stylesheet" href="css/ottomanStyle.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>About Empire</title>
 </head>
@@ -20,7 +21,9 @@ pageContext.setAttribute("customer", customer);
 		<c:when test="${customer.isLoggedIn()}"><%@include file="LoggedInNavBar.jsp"%></c:when>
 		<c:when test="${!customer.isLoggedIn()}"><%@include file="HeadNavBar.jsp"%></c:when>
 </c:choose>
+<div id="aboutUsDescription">
 We are the Ottoman Empire. Founded in 2016 we will invade your home with our ottomans<br>
  and other lovely furniture if you give us money. Give us money today!
+ </div>
 </body>
 </html>

@@ -6,6 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet" href="css/ottomanStyle.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
 <title>Otto Empire</title>
 </head>
@@ -71,16 +74,20 @@ users get here if they click "start shopping" on the initial page
 	  	<div class="row">
 			<c:choose>
 			<c:when test="${sr.getSearchArray().size() > (i*2)}">
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-					<div class="thumbnail">
-						<img src="ottoImages/<c:out value="${sr.getAResult((i*2)).getImageName()}"/>" alt="..." id="resImg">
-						<div class="caption">
-							<h3><c:out value="${sr.getAResult(i*2).getName()}" /></h3>
-							<p><c:out value="$${sr.getAResult(i*2).getPrice()}" /></p>
-							<p><c:out value="${sr.getAResult(i*2).getDescription()}" /></p>
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="productContainer">
+					<div class="">
+					 
+						<a href="SeeProductServlet?productToView=${sr.getAResult(i*2).getName()}">
+							<img src="ottoImages/<c:out value="${sr.getAResult((i*2)).getImageName()}"/>" alt="..." id="resImg">
+						</a>
+					  
+					  <div class="caption">
+								<h3><c:out value="${sr.getAResult(i*2).getName()}" /></h3>
+								<p><c:out value="$${sr.getAResult(i*2).getPrice()}" /></p>
+								<p><c:out value="${sr.getAResult(i*2).getDescription()}" /></p>
 							<p>
 								<c:if test="${customer.isLoggedIn()}">
-									<a href="AddToCartServlet?productToAdd=${sr.getAResult(i*2).getName()}" class="btn btn-primary" role="button">Add to Cart</a>
+									<a href="AddToCartServlet?productToAdd=${sr.getAResult(i*2).getName()}&cameFrom=search" class="btn btn-primary" role="button">Add to Cart</a>
 								</c:if>
 								<c:if test="${!customer.isLoggedIn()}">
 									<a href="OttoRegister.jsp" class="btn btn-primary" role="button">Login to Add</a>
@@ -94,16 +101,18 @@ users get here if they click "start shopping" on the initial page
 <!-- Second Result on row -->
 			<c:choose>
 				<c:when test="${sr.getSearchArray().size() > (i*2)+1}">
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-						<div class="thumbnail">
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="productContainer">
+						<div class="">
+						  <a href="SeeProductServlet?productToView=${sr.getAResult((i*2)+1).getName()}">
 							<img src="ottoImages/<c:out value="${sr.getAResult((i*2)+1).getImageName()}"/>" alt="..." id="resImg">
+						  </a>
 							<div class="caption">
 								<h3><c:out value="${sr.getAResult((i*2)+1).getName()}" /></h3>
-								<p><c:out value="$${sr.getAResult(i*2).getPrice()}" /></p>
+								<p><c:out value="$${sr.getAResult((i*2)+1).getPrice()}" /></p>
 								<p><c:out value="${sr.getAResult((i*2)+1).getDescription()}" /></p>
 								<p>
 								<c:if test="${customer.isLoggedIn()}">
-									<a href="AddToCartServlet?productToAdd=${sr.getAResult((i*2)+1).getName()}" class="btn btn-primary" role="button">Add to Cart</a>
+									<a href="AddToCartServlet?productToAdd=${sr.getAResult((i*2)+1).getName()}&cameFrom=search" class="btn btn-primary" role="button">Add to Cart</a>
 								</c:if>
 								<c:if test="${!customer.isLoggedIn()}">
 									<a href="OttoRegister.jsp" class="btn btn-primary" role="button">Login to Add</a>
@@ -119,21 +128,21 @@ users get here if they click "start shopping" on the initial page
 	</div>
 	
 						<!-- Pagination -->
-																<!-- Previous Button -->
-	<c:choose>													
-		<c:when test="${sr.getSearchArray().size()>10}">
-			<div class="container">
-			<nav>
-			  <ul class="pagination">
-			  <c:choose>
-				  <c:when test="${sr.getStart()>4}">
-				    <li>
-				      <a href="UpdateSearchlet?pageNum=${sr.getStart()-5}" aria-label="Previous">
-				        <span aria-hidden="true">&laquo;</span>
-				      </a>
-				    </li>
-				   </c:when>
-			   </c:choose>
+		<div id="paginationMain">									<!-- Previous Button -->
+	  		<c:choose>													
+		      <c:when test="${sr.getSearchArray().size()>10}">
+			    <div class="container">
+				  <nav>
+			 		 <ul class="pagination">
+			  		    <c:choose>
+						  <c:when test="${sr.getStart()>4}">
+				           <li>
+				             <a href="UpdateSearchlet?pageNum=${sr.getStart()-5}" aria-label="Previous">
+				              <span aria-hidden="true">&laquo;</span>
+				             </a>
+				          </li>
+				         </c:when>
+			            </c:choose>
 			   																<!-- Page Number Buttons -->
 			   <c:forEach var="i" begin="0" end="${sr.getNumOfPagesNeeded()-1}">
 			    <li><a href="UpdateSearchlet?pageNum=${i*5}"><c:out value="${i+1}" /></a></li>
@@ -154,6 +163,7 @@ users get here if they click "start shopping" on the initial page
 			</div>
 		</c:when>
 	</c:choose>	
+	</div>	
 	<!-- End Pagination -->
 
 </body>

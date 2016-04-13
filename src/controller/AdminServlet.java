@@ -89,9 +89,8 @@ AdminController ac = new AdminController();
 			//end paste
 			String productKeyWords = request.getParameter("adminKeyWords");
 			if(!productName.equals(null) && !productName.equals("")){
-				if(ac.addInventory(productName, productDesc, productPrice, productImage, productKeyWords)){
+				ac.addInventory(productName, productDesc, productPrice, productImage, productKeyWords);
 					
-				}
 			}
 		}else if(request.getParameter("submitCard")!=null){			//if the user tried to submit a credit card
 			

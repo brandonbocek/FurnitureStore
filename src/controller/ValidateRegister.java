@@ -10,6 +10,7 @@ import java.sql.Statement;
 public class ValidateRegister {
 
 	private String fn, ln, pw, rpw, eA, bA, sA, encrCard, birthday;
+	private String[] birthDayMonth;
 	private int bM=0, bD=0, bY=0; 
 	
 	// Database credentials
@@ -22,7 +23,7 @@ public class ValidateRegister {
 	
 	
 	public ValidateRegister(String firstName, String lastName, String password, String rePassword
-			,String birthMonth, String birthDay, String birthYear, String emailAddr
+			,String birthDay, String emailAddr
 			,String addressBill, String addressShip, String cardNum){
 //find all the errors and return a byte, every type of error is listed below
 //any value with a null or blank ""
@@ -32,14 +33,12 @@ public class ValidateRegister {
 		ln=lastName;
 		pw=password;
 		rpw=rePassword;
-		birthday=birthMonth+birthDay+birthYear;
-		bM=Integer.parseInt(birthMonth);
-		bD=Integer.parseInt(birthDay);
-		try{
-			bY=Integer.parseInt(birthYear);
-		}catch(NumberFormatException exc){
-			bY=0;
-		}
+		birthday=birthDay;
+		birthDayMonth=birthDay.split(",");
+		birthDayMonth[1] = birthDayMonth[1].trim();
+		bY = Integer.parseInt(birthDayMonth[1]);
+		
+		
 		eA=emailAddr;
 		bA=addressBill;
 		sA=addressShip;
@@ -97,39 +96,9 @@ public class ValidateRegister {
 		if(bY<1900 || bY>2000){
 			return false;
 		}
-		switch(bM){
-			case 1: if(bD>31) return false;
-			case 2: if(!februaryIsValid()) return false;
-			case 3: if(bD>31) return false;
-			case 4: if(bD>30) return false;
-			case 5: if(bD>31) return false;
-			case 6: if(bD>30) return false;
-			case 7: if(bD>31) return false;
-			case 8: if(bD>31) return false;
-			case 9: if(bD>30) return false;
-			case 10: if(bD>31) return false;
-			case 11: if(bD>30) return false;
-			case 12: if(bD>31) return false;
-		}
 		return true;
 	}
-	private boolean februaryIsValid(){
-		if(bD>29){
-			return false;
-		}
-		if(bD==29){	//if the user claims to be born on leap day
-			if(bY%4!=0){		//did they choose a leap year?
-				return false;
-			}else{
-				if(bY%100==0){	//if it is divisible by 100 but not 400, it's not a leap year
-					if(bY%400!=0){
-						return false;
-					}
-				}
-			}
-		}
-		return true;
-	}
+	
 	private boolean emailIsValid(){
 		if(eA.equals("")){
 			return false;

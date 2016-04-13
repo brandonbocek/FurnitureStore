@@ -19,8 +19,15 @@ pageContext.setAttribute("customer", customer);
 %>
 <%@include file="LoggedInNavBar.jsp"%>
 <!-- This is where I list all of the customer's orders -->
+<c:choose>
+<c:when test="${customer.getMaxInCart()==0}">
+<div id="cartIsEmptyWarning">Your shopping cart is currently empty!</div>
+<div id="emptyCartSuggestion">Search for some furniture and fill your cart up</div>
+</c:when>
+<c:when test="${customer.getMaxInCart()!=0}">
 <div id="shopCartTitle">Here are your orders</div>
 <div class="container" style="margin-left: 25%">
+
 	  <c:forEach var="i" begin="0" end="${customer.getMaxInCart()-1}">
 	  	<div class="row">
 			<c:choose>
@@ -42,7 +49,7 @@ pageContext.setAttribute("customer", customer);
 			</c:choose>
 		</div>
 	</c:forEach>
-</div>
+  </div>
 	<div id="yourTotal">
 	<p>Your total is <c:out value="${customer.getCart().getPriceTotal()}" /></p>
 	</div>
@@ -51,5 +58,7 @@ pageContext.setAttribute("customer", customer);
 			<a href="GoToCheckoutServlet" class="btn btn-success" role="button">Go To Checkout</a>
 		</p>
 	</div>
+  </c:when>
+</c:choose>
 </body>
 </html>
